@@ -10,6 +10,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
+//to get to work on heroku
+const PORT = process.env.PORT || 5000
+
 app.get('/', (req,res) => 
 {
     //testing to see what files are in the current directory
@@ -57,4 +60,4 @@ app.post('/post', function (req, res) {
     //console.log(res);
 });
 
-app.listen(8080, () => console.log("App launched"));
+app.listen(PORT, () => console.log("App launched"));
