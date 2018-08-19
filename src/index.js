@@ -15,6 +15,8 @@ const PORT = process.env.PORT || 5000
 
 app.get('/', (req,res) => 
 {
+
+    
     //testing to see what files are in the current directory
     // fs.readdir(__dirname, (err, files) => 
     // {
@@ -59,5 +61,7 @@ app.post('/post', function (req, res) {
     //console.log(req);
     //console.log(res);
 });
+
+
 
 app.listen(PORT, () => console.log("App launched"));
