@@ -62,6 +62,52 @@ app.post('/post', function (req, res) {
     //console.log(res);
 });
 
+/**
+ * DATABASE (HEROKU) START
+ */
+/**
+Server: sql3.freemysqlhosting.net
+Name: sql3252727
+Username: sql3252727
+Password: PWQRShW1lV
+Port number: 3306
+ */
+const mysql = require('mysql');
+const connection = mysql.createConnection(
+    {
+        host:"sql3.freemysqlhosting.net",
+        user:"sql3252727",
+        password:"PWQRShW1lV",
+        database:"sql3252727"
+    }
+);
 
+connection.connect( (err) => 
+{
+    if (err) throw err;
+    console.log("Connected to Database");
+} );
+
+let sql = "SELECT * FROM TEST";
+
+connection.query(sql, (err, result) => 
+{
+    if (err) throw err;
+    console.log("Success!");
+    result.forEach(row => 
+    {
+        console.log( row );
+    });
+});
+
+/**
+ * SQL Statements made:
+ * CREATE TABLE TEST (id int NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), post VARCHAR(1000));
+ * INSERT INTO TEST (post) VALUES ('testing to see if i can insert entry into this table : from localhost')
+ * SELECT * FROM TEST
+ */
+ /**
+  * DATABASE (HEROKU) END
+  */
 
 app.listen(PORT, () => console.log("App launched"));
